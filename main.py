@@ -83,10 +83,8 @@ def takecommand1():
     return z
 
 
-
 if __name__== "__main__":
-    # wishMe()
-    # Speak("dabir is one of your friend but he is dmf")
+    wishMe()
     while True:
         query = takecommand().lower()
         #logic for executing tasks
@@ -123,13 +121,6 @@ if __name__== "__main__":
             results1 = wikipedia.summary(query, sentences=5)
             print(results1)
             Speak(results1)
-
-        # elif "play song" in query:
-        #     Speak("Playing Songs...")
-        #     music_dir = "C:\\Users\\abira\\Music\\2021"
-        #     songs = os.listdir(music_dir)
-        #     print(songs)
-        #     os.startfile(os.path.join(music_dir, songs[random.randrange(1, 66).__floor__()]))
 
         elif "play song" in query:
             print("From Which Folder Should I take ?")
