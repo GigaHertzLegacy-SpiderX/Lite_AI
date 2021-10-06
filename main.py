@@ -12,7 +12,7 @@ import math
 
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
-print(voices[1].id)
+voices = engine.setProperty("voice", voices[1].id)
 
 def Speak(audio):
     engine.say(audio)
@@ -49,7 +49,7 @@ def sendemail(to, content):
 def takecommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source, duration=2.5)
+        r.adjust_for_ambient_noise(source, duration=2.1)
         print("Listening...")
         audio = r.listen(source)
 
@@ -64,9 +64,29 @@ def takecommand():
         return "None"
     return query
 
+def takecommand1():
+    q = sr.Recognizer()
+    with sr.Microphone() as source1:
+        q.adjust_for_ambient_noise(source1, duration=3)
+        print("Listening...")
+        audio1 = q.listen(source1)
+
+    try:
+        print("Recognising...")
+        # Speak("Recognising...")
+        z = q.recognize_google(audio1, language='en-in')
+        print(f"User said: {z}\n")
+
+    except Exception as e:
+        print("Say that again Please...")
+        return "None"
+    return z
+
+
 
 if __name__== "__main__":
-    wishMe()
+    # wishMe()
+    # Speak("dabir is one of your friend but he is dmf")
     while True:
         query = takecommand().lower()
         #logic for executing tasks
@@ -104,12 +124,40 @@ if __name__== "__main__":
             print(results1)
             Speak(results1)
 
+        # elif "play song" in query:
+        #     Speak("Playing Songs...")
+        #     music_dir = "C:\\Users\\abira\\Music\\2021"
+        #     songs = os.listdir(music_dir)
+        #     print(songs)
+        #     os.startfile(os.path.join(music_dir, songs[random.randrange(1, 66).__floor__()]))
+
         elif "play song" in query:
-            Speak("Playing Songs...")
-            music_dir = "C:\\Users\\abira\\Music\\2021"
-            songs = os.listdir(music_dir)
-            print(songs)
-            os.startfile(os.path.join(music_dir, songs[random.randrange(1, 66).__floor__()]))
+            print("From Which Folder Should I take ?")
+            print("1.NCS         --!--         2.mood")
+            Speak("From Which Folder Should I take ?")
+            z = takecommand().lower()
+            if "ncs" in z:
+                Speak("Playing NCS songs...")
+                # music_dir1 = "C:\\Users\\abira\\Music\\2021"
+                music_dir2 = "C:\\Users\\abira\\Music\\NCS"
+                # songs1 = os.listdir(music_dir1)
+                songs2 = os.listdir(music_dir2)
+                print(songs2)
+                os.startfile(os.path.join(music_dir2, songs2[random.randrange(1, 41).__floor__()]))
+
+            elif "mood" in z:
+                Speak("Playing 2021 songs...")
+                print("Playing 2021 songs...")
+                Speak("Playing Songs...")
+                music_dir1 = "C:\\Users\\abira\\Music\\2021"
+                # music_dir2 = "C:\\Users\\abira\\Music\\NCS"
+                songs1 = os.listdir(music_dir1)
+                # songs2 = os.listdir(music_dir2)
+                print(songs1)
+                os.startfile(os.path.join(music_dir1, songs1[random.randrange(1, 66).__floor__()]))
+
+
+
 
         elif "the time" in query:
             strtime = datetime.datetime.now().strftime("%H:%M:%S")
@@ -120,6 +168,9 @@ if __name__== "__main__":
             #set songs file path here
             pycharm_path = "C:\\Program Files\\JetBrains\\PyCharm Community Edition 2021.2\\bin\\pycharm64.exe"
             os.startfile(pycharm_path)
+
+        elif "dabir" in query:
+            Speak("dabir is one of your friend but it is better to call him dmf.")
 
         elif "email to dk" in query:
             try:
