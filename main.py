@@ -40,8 +40,8 @@ def sendemail(to, content):
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.ehlo()
     server.starttls()
-    server.login("goooglekeda@gmail.com", "dabir7890")
-    server.sendmail("goooglekeda@gmail.com", to, content)
+    server.login("your email", "password")
+    server.sendmail("your email", to, content)
     server.close()
 
 
@@ -140,7 +140,7 @@ if __name__== "__main__":
                 Speak("Playing 2021 songs...")
                 print("Playing 2021 songs...")
                 Speak("Playing Songs...")
-                music_dir1 = "C:\\Users\\abira\\Music\\2021"
+                music_dir1 = "song location"
                 # music_dir2 = "C:\\Users\\abira\\Music\\NCS"
                 songs1 = os.listdir(music_dir1)
                 # songs2 = os.listdir(music_dir2)
@@ -167,7 +167,7 @@ if __name__== "__main__":
             try:
                 Speak("What should I say ?")
                 content = takecommand()
-                to = "goooglekeda5@gmail.com"
+                to = "receiver mail"
                 sendemail(to, content)
                 Speak("Email Sent !")
 
