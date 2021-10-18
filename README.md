@@ -1,5 +1,5 @@
 # Lite_AI
-Inspired by Code_with_Harry...
+Less Size, fast perfomance...
 
 # Artificial_Inteligence 
 
